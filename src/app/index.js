@@ -11,7 +11,9 @@ var TodoComponent = React.createClass({
     render: function(){
         var todos = this.state.todos;
         todos = todos.map(function(item, index){
-            return(<TodoItem key={index} item={item} />);
+            return(
+                    <li>{item}</li>
+            );
         });
         return(
             <div id="todo-list">
@@ -20,19 +22,6 @@ var TodoComponent = React.createClass({
             </div>
         );
     } //render
-});
-
-//Create TodoItem component
-var TodoItem = React.createClass({
-    render: function(){
-        return(
-            <li>
-                <div className="todo-item">
-                    <span className="item-name">{this.props.item}</span>
-                </div>
-            </li>
-        );
-    }
 });
 
 ReactDOM.render(<TodoComponent />, document.getElementById('todo-wrapper'));
