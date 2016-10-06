@@ -20,11 +20,6 @@ var TodoItem = React.createClass({
     //Custom functions
     handleDelete: function(){
         this.props.onDelete(this.props.item);
-    },
-
-    //Lifecycle functions
-    componentWillUnmount: function(){
-        alert('You removed: ' + ReactDom.findDOMNode(this.refs.thisItem).textContent);
     }
 });
 
