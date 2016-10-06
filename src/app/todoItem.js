@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDom = require('react-dom');
 
 //CSS requires
 require('./css/todoItem.css');
@@ -9,7 +10,7 @@ var TodoItem = React.createClass({
         return(
             <li>
                 <div className="todo-item">
-                    <span className="item-name">{this.props.item}</span>
+                    <span className="item-name" ref="thisItem">{this.props.item}</span>
                     <span className="item-remove" onClick={this.handleDelete}> x </span>
                 </div>
             </li>
@@ -19,6 +20,12 @@ var TodoItem = React.createClass({
     //Custom functions
     handleDelete: function(){
         this.props.onDelete(this.props.item);
+    },
+
+    //Lifecycle functions
+    componentWillUnmount: function(){
+        alert('You removed ' + ReactDom.findDOMNode(this.refs.thisItem).textContent);
+        setTimeout(function(){}, 8000);
     }
 });
 
