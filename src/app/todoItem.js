@@ -24,8 +24,7 @@ var TodoItem = React.createClass({
 
     //Lifecycle functions
     componentWillUnmount: function(){
-        alert('You removed ' + ReactDom.findDOMNode(this.refs.thisItem).textContent);
-        setTimeout(function(){}, 8000);
+        alert('You removed: ' + ReactDom.findDOMNode(this.refs.thisItem).textContent);
     }
 });
 
