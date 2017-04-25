@@ -4,9 +4,9 @@ let reactDom = require('react-dom');
 let TodoComponent = React.createClass({
   render: function(){
     return(
-      <div> 
+      <div>
         <h1>HiHi</h1>
-        <p>How/s it going?!</p>
+        <p>How is it going?!</p>
       </div>
 
     );
