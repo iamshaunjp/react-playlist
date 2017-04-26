@@ -7,10 +7,16 @@ let TodoComponent = React.createClass({
       <div>
         <h1>HiHi</h1>
         <p>How is it going?!</p>
+        <p>{this.props.msg}</p>
+        <p>{this.props.cat.name}</p>
+        <p>{this.props.cat.color}</p>
+        <p>{this.props.cat.nickname}</p>
       </div>
 
     );
   }
 });
 
-reactDom.render(<TodoComponent/>, document.getElementById('todo-wrapper')) //rendering it to the DOM
+let kitty = {name: 'Mars', color: 'orange', nickname: 'bae'};
+
+reactDom.render(<TodoComponent msg="Meow" cat={kitty}/>, document.getElementById('todo-wrapper')) //rendering it to the DOM
