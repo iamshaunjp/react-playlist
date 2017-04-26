@@ -2,21 +2,25 @@ let React = require('react'); //var needs to be capitalized
 let reactDom = require('react-dom');
 
 let TodoComponent = React.createClass({
+  getInitialState: function(){
+    return{
+      todos:['get up', 'go to work', 'nap', 'study', 'sleep']
+    }
+  },
+
   render: function(){
     return(
-      <div>
-        <h1>HiHi</h1>
-        <p>How is it going?!</p>
-        <p>{this.props.msg}</p>
-        <p>{this.props.cat.name}</p>
-        <p>{this.props.cat.color}</p>
-        <p>{this.props.cat.nickname}</p>
+      <div id="todo-list">
+        <p>My Life</p>
+        <ul>
+          <li>{this.state.todos[0]}</li>
+          <li>{this.state.todos[1]}</li>
+          <li>{this.state.todos[2]}</li>
+        </ul>
       </div>
 
     );
-  }
+  }//render
 });
 
-let kitty = {name: 'Mars', color: 'orange', nickname: 'bae'};
-
-reactDom.render(<TodoComponent msg="Meow" cat={kitty}/>, document.getElementById('todo-wrapper')) //rendering it to the DOM
+reactDom.render(<TodoComponent/>, document.getElementById('todo-wrapper')) //rendering it to the DOM
