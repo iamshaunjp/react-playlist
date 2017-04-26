@@ -10,20 +10,16 @@ let TodoComponent = React.createClass({
   },
 
   render: function(){
-    let something = setTimeout(function(){
-      this.setState({
-        age: 10
+      let todos = this.state.todos;
+      todos = todos.map(function(item, index){
+        return (
+          <li>{item}</li>
+        );
       })
-    }.bind(this), 5000)
     return(
       <div id="todo-list">
         <p>My Life</p>
-        <p>{this.state.age}</p>
-        <ul>
-          <li>{this.state.todos[0]}</li>
-          <li>{this.state.todos[1]}</li>
-          <li>{this.state.todos[2]}</li>
-        </ul>
+        <ul>{todos}</ul>
       </div>
 
     );
