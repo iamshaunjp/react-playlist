@@ -1,0 +1,26 @@
+/* addItem.css */
+
+#add-todo{
+  display: flex;
+}
+
+#add-todo input[type="text"]{
+    flex-basis: 0;
+    flex-grow: 7;
+    padding: 10px;
+    border: 2px solid #7f4cc1;
+    border-radius: 4px 0 0 4px;
+    color: #777;
+}
+
+#add-todo input[type="submit"]{
+    flex-basis: 0;
+    flex-grow: 3;
+    padding: 10px;
+    background: #7f4cc1;
+    border-radius: 0 4px 4px 0;
+    border: 2px solid #7f4cc1;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+}

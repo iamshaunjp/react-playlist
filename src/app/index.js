@@ -7,6 +7,7 @@ require('./css/index.css')
 // Module requires
 // we can use this require statement/split up our code is because we are using webpack
 const TodoItem = require('./todo-item')
+const AddItem = require('./add-item')
 
 // Create component
 const TodoComponent = React.createClass({
@@ -38,6 +39,7 @@ const TodoComponent = React.createClass({
         <p>The busiest people have the most leisure...</p>
         <p>{this.state.age}</p>
         <ul>{todos}</ul>
+        <AddItem onAdd={this.onAdd} />
       </div>
     )
   }, // render
@@ -48,6 +50,14 @@ const TodoComponent = React.createClass({
       return item !==val
     })
     // this is how we change the state of the component
+    this.setState({
+      todos: updatedTodos
+    })
+  }, // onDelete
+
+  onAdd: function(item) {
+    const updatedTodos = this.state.todos
+    updatedTodos.push(item)
     this.setState({
       todos: updatedTodos
     })
