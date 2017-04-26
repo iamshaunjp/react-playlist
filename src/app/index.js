@@ -4,14 +4,21 @@ let reactDom = require('react-dom');
 let TodoComponent = React.createClass({
   getInitialState: function(){
     return{
-      todos:['get up', 'go to work', 'nap', 'study', 'sleep']
+      todos:['get up', 'go to work', 'nap', 'study', 'sleep'],
+      age: 7
     }
   },
 
   render: function(){
+    let something = setTimeout(function(){
+      this.setState({
+        age: 10
+      })
+    }.bind(this), 5000)
     return(
       <div id="todo-list">
         <p>My Life</p>
+        <p>{this.state.age}</p>
         <ul>
           <li>{this.state.todos[0]}</li>
           <li>{this.state.todos[1]}</li>
