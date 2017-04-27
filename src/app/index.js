@@ -4,10 +4,29 @@ const React = require('react')
 const ReactDom = require('react-dom')
 require('./css/index.css')
 
+// react router gives us two components to work with
+// router component which keeps url in sync with the UI of the application
+// route component which matches our routes to the app components
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+
 // Module requires
 // we can use this require statement/split up our code is because we are using webpack
 const TodoItem = require('./todo-item')
 const AddItem = require('./add-item')
+const About = require('./about')
+
+const App = React.createClass({
+  render: function() {
+    return (
+      <Router>
+        <Switch>
+          <Route exact={true} path={'/'} component={TodoComponent}></Route>
+          <Route path={'/about'} component={About}></Route>
+        </Switch>
+      </Router>
+    )
+  }
+})
 
 // Create component
 const TodoComponent = React.createClass({
@@ -100,4 +119,4 @@ const TodoComponent = React.createClass({
 })
 
 // Put component into html page
-ReactDom.render(<TodoComponent />, document.getElementById('todo-wrapper'))
+ReactDom.render(<App />, document.getElementById('todo-wrapper'))
