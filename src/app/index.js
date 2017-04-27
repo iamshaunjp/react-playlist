@@ -10,24 +10,31 @@ let TodoComponent = React.createClass({
   },
 
   render: function(){
-    let something = setTimeout(function(){
-      this.setState({
-        age: 10
+      let todos = this.state.todos;
+      todos = todos.map(function(item, index){
+        return (
+          <TodoItem item={item} key={index}/>
+        );
       })
-    }.bind(this), 5000)
     return(
       <div id="todo-list">
         <p>My Life</p>
-        <p>{this.state.age}</p>
-        <ul>
-          <li>{this.state.todos[0]}</li>
-          <li>{this.state.todos[1]}</li>
-          <li>{this.state.todos[2]}</li>
-        </ul>
+        <ul>{todos}</ul>
       </div>
 
     );
   }//render
 });
 
+let TodoItem = React.createClass({
+  render: function(){
+    return(
+      <li>
+        <div className="todo-item">
+          <span className="item-name">{this.props.item}</span>
+        </div>
+      </li>
+    )
+  }
+})
 reactDom.render(<TodoComponent/>, document.getElementById('todo-wrapper')) //rendering it to the DOM
