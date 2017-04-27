@@ -7,7 +7,7 @@ require('./css/index.css')
 // react router gives us two components to work with
 // router component which keeps url in sync with the UI of the application
 // route component which matches our routes to the app components
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
 
 // Module requires
 // we can use this require statement/split up our code is because we are using webpack
@@ -76,6 +76,7 @@ const TodoComponent = React.createClass({
     return (
       // This is JSX
       <div id="todo-list">
+        <Link to={'/about'}>About</Link>
         <p>The busiest people have the most leisure...</p>
         <p>{this.state.age}</p>
         <ul>{todos}</ul>
