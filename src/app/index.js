@@ -11,12 +11,33 @@ const AddItem = require('./add-item')
 
 // Create component
 const TodoComponent = React.createClass({
+  // these are two lifecycle functions
+  // They happen at a particular point in time during the lifecycle of this componenet
+  // they dont all fire at once, they fire in a particular order
+  // getInitialState fires before render
+
+  // There are many more lifecycle functions that make up the componenet lifecycle
+
+  // Mounting lifecycle functions: These are functions the fire when componenet is mounted to the DOM
+  // 1. getInitialState: Sets up initial state
+  // 2. componentWillMount: Any last minute preparations before componenet mounts
+  // 3. render: Only require lifecycle function. Returns HTML to add to the document
+  // 4. componentDidMount: First fires after component mounts to the DOM. Good place to load external data (database).
+
+  // Updating lifecycle functions:
+  // 1. componentWIllReceiveProps
+  // 2. shouldComponentUpdate
+  // 3, componentWIllUpdate
+  // 4. render
+  // 5. componentDidUpdate
   getInitialState: function() {
     return {
       todos: ['wash up', 'eat lunch', 'take nap', 'buy flowers'],
       age: 27
     }
   },
+
+  // render is the only required lifeycle function
   render: function() {
     let todos = this.state.todos;
     todos = todos.map(function(item, index) {
@@ -61,6 +82,20 @@ const TodoComponent = React.createClass({
     this.setState({
       todos: updatedTodos
     })
+  },
+
+  // lifecycle functions
+  componentWillMount: function() {
+    console.log('componenetWillMount')
+  },
+
+  componentDidMount: function() {
+    console.log('componenetDidMount')
+    // good place for any grabbing of external data
+  },
+
+  componentWillUpdate: function() {
+    console.log('componenetWillUpdate')
   }
 })
 
