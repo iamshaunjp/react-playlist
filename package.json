@@ -1,0 +1,37 @@
+{
+  "name": "react-playlist",
+  "version": "1.0.0",
+  "description": "All the course files for the Net Ninja React tutorial playlist on YouTube",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build",
+    "build": "webpack -d && webpack-dev-server --content-base src/ --inline --hot --history-api-fallback"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessicamvs/react-playlist.git"
+  },
+  "author": "Jessica Vasquez-Soltero",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jessicamvs/react-playlist/issues"
+  },
+  "homepage": "https://github.com/jessicamvs/react-playlist#readme",
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.0",
+    "style-loader": "^0.16.1",
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.4"
+  }
+}
