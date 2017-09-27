@@ -1,5 +1,27 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+import { Router, Route, browserHistory, Link } from 'react-router';
+
+//Module requires
+var TodoItem = require('./todoItem');
+var AddItem = require('./addItem');
+var About = require('./about');
+
+//CSS requires
+require('./css/index.css');
+
+
+//SETUP ROUTING
+var App = React.createClass({
+    render: function(){
+        return(
+            <Router history={browserHistory}>
+                <Route path={"/"} component={TodoComponent}></Route>
+                <Route path={"/about"} component={About}></Route>
+            </Router>
+        );
+    }
+});
 
 //Create a component
 var TodoComponent = React.createClass({
@@ -15,8 +37,10 @@ var TodoComponent = React.createClass({
         }.bind(this));
         return(
             <div id="todo-list">
+                <Link to={"/about"}>About</Link>
                 <p>The busiest people have the most leisure...</p>
                 <ul>{todos}</ul>
+                <AddItem onAdd={this.onAdd} />
             </div>
         );
     }, //render
@@ -45,12 +69,17 @@ var TodoItem = React.createClass({
                 </div>
             </li>
         );
+
     },
 
-    //Custom functions
-    handleDelete: function(){
-        this.props.onDelete(this.props.item);
+    onAdd: function(item){
+        var updatedTodos = this.state.todos;
+        updatedTodos.push(item);
+        this.setState({
+            todos: updatedTodos
+        })
     }
+
 });
 
-ReactDOM.render(<TodoComponent />, document.getElementById('todo-wrapper'));
+ReactDOM.render(<App />, document.getElementById('todo-wrapper'));
