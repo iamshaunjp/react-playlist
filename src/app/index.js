@@ -47,12 +47,29 @@ var TodoComponent = React.createClass({
 
     //Custom functions
     onDelete: function(item){
-        var updatedTodos = this.state.todos.filter(function(val, index){
-            return item !== val;
-        });
+        var updatedTodos = this.state.todos;
+        var indexOfItem = updatedTodos.indexOf(item);
+        if (indexOfItem !== -1) {
+          updatedTodos.splice(indexOfItem, 1);
+        }
         this.setState({
           todos: updatedTodos
         });
+    },
+});
+
+//Create TodoItem component
+var TodoItem = React.createClass({
+    render: function(){
+        return(
+            <li>
+                <div className="todo-item">
+                    <span className="item-name">{this.props.item}</span>
+                    <span className="item-remove" onClick={this.handleDelete}> x </span>
+                </div>
+            </li>
+        );
+
     },
 
     onAdd: function(item){
