@@ -23,13 +23,15 @@ var TodoComponent = React.createClass({
 
     //Custom functions
     onDelete: function(item){
-        var updatedTodos = this.state.todos.filter(function(val, index){
-            return item !== val;
-        });
+        var updatedTodos = this.state.todos;
+        var indexOfItem = updatedTodos.indexOf(item);
+        if (indexOfItem !== -1) {
+          updatedTodos.splice(indexOfItem, 1);
+        }
         this.setState({
           todos: updatedTodos
         });
-    }
+    },
 });
 
 //Create TodoItem component
